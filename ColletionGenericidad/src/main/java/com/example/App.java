@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.management.ValueExp;
@@ -72,5 +73,14 @@ public class App {
      * framework: 
      * interfaces - Implementaciones - Algoritmos (polimorfismo)
      * 
+     *colección de números enteros a partir de un array:
      * */
+    Integer[] arrayNumerosEnteros = {1, 2, 3, 4, 5};
+    
+    List<Integer> numerosEnteros = Arrays.asList(arrayNumerosEnteros);
+    
+    /*
+     * Una colección obtenida directamente a partir de un array es una colección de tamaño fijo.
+     * */
+    
 }
