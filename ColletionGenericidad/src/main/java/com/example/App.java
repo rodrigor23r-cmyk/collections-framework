@@ -65,4 +65,12 @@ public class App {
         		System.out.println(d);
         }
     */	
+    
+    /**
+     * Framework de colecciones
+     * colecciones: son interfaces genéricas <E>. operaciones de agregado (group by que vimos en SQL) 
+     * framework: 
+     * interfaces - Implementaciones - Algoritmos (polimorfismo)
+     * 
+     * */
 }
