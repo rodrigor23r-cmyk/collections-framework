@@ -87,46 +87,43 @@ public class App {
     // inicializar con null no funciona. no puedo agregar elementos porque no reserva memoria
     // hay que usar un constructor de alguna de las clases de List.
     // List<Personaje> personaje = new ArrayList<Personaje>();
-    List personajes = new ArrayList<Personaje>();
+    var personajes = new ArrayList<Personaje>();
     
 
-    Personaje personaje1 = Personaje.builder()
+    personajes.add(Personaje.builder()
     		.nombre("Duglas")
     		.primerApellido("Taydron")
     		.segundoApellido("González")
     		.fechaNacimiento(LocalDate.of(1995, Month.JANUARY, 20))
     		.genero(Genero.HOMBRE)
-    		.build();
-    Personaje personaje2 = Personaje.builder()
+    		.build());
+    personajes.add(Personaje.builder()
             .nombre("Carolina")
             .primerApellido("Garzón")
             .segundoApellido("Becerra")
             .fechaNacimiento(LocalDate.of(2000, Month.MAY, 15))
             .genero(Genero.MUJER)
-            .build();
+            .build());
 
-    Personaje personaje3 = Personaje.builder()
+    personajes.add(Personaje.builder()
             .nombre("María")
             .primerApellido("Garzón")
             .segundoApellido("González")
             .fechaNacimiento(LocalDate.of(2005, Month.SEPTEMBER, 3))
             .genero(Genero.MUJER)
-            .build();
+            .build());
 
-    Personaje personaje4 = Personaje.builder()
+    personajes.add(Personaje.builder()
             .nombre("Jerónimo")
             .primerApellido("Arenal")
             .segundoApellido("Gómez")
             .fechaNacimiento(LocalDate.of(1989, Month.DECEMBER, 12))
             .genero(Genero.HOMBRE)
-            .build();
+            .build());
 
-    // añadir a la lista:
-    //personajes.add(personaje1);
-    
-    // personajes = (ArrayList<Personaje>) Arrays.asList(personaje2, personaje3, personaje4);
-    // este casteo no funciona si había usado var en vez de Personaje
-    personajes = Arrays.asList(personaje2, personaje3, personaje4);
+    /*
+     * la lista resultante no es de tamaño fijo porque no es un array
+     * */
     System.out.println(personajes);
     
 
