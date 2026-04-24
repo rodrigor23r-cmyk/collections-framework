@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.management.ValueExp;
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
+
 /**
  * docs.oracle.com/javase/tutorial/extra/generics/index.html
  * 
@@ -143,6 +145,7 @@ public class App {
     	System.out.println("=========LISTADO ORIGINAL DE PERSONAS================");
     	System.out.println(personajes);
     	
+
     	Iterator<Personaje> it = personajes.iterator();
     	
     	while (it.hasNext()) {
@@ -155,6 +158,18 @@ public class App {
     	
     	System.out.println("========RESULTADO DE HACER LA ELIMINACION============");
     	personajes.forEach(System.out::println);
+    	
+
+    	/*variante 2 for mejorada
+    	 * eliminar personas de género mujer
+    	*/
+    	for (Personaje personillas : personajes) {
+    		if (personillas.genero().equals(Genero.MUJER)) {
+    			personajes.remove(personillas);
+    		}
+    	// la línea 168 no da error ahora pero no funcionará.	
+    	}
+    	
     	
 	}
 }
