@@ -1,6 +1,9 @@
 package com.example;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.management.ValueExp;
@@ -59,7 +62,7 @@ public class App {
         	// System.out.println(Integer.valueOf(d));
         		
         	}
-        }
+        
  /*       if (xx instanceof String d || yy instanceof Number n) {
         		if (
         		System.out.println(d);
@@ -73,4 +76,29 @@ public class App {
      * interfaces - Implementaciones - Algoritmos (polimorfismo)
      * 
      * */
+    Integer[] arrayNumerosEnteros = {1,2,3,4,5};
+    List<Integer> numerosEnteros = Arrays.asList(arrayNumerosEnteros);
+    // numerosEnteros.add(6); // esto daría error
+    
+    // =================================================================
+    
+    List<Personaje> personaje = null;
+    // inicializar con null no funciona. no puedo agregar elementos porque no reserva memoria
+    // hay que usar un constructor de alguna de las clases de List.
+
+    
+    
+    Personaje personaje1 = Personaje.builder()
+    		.nombre("Duglas")
+    		.primerApellido("Taydron")
+    		.segundoApellido("González")
+    		.fechaNacimiento(LocalDate.of(1995, Month.JANUARY, 20))
+    		.genero(Genero.HOMBRE)
+    		.build();
+    
+    personaje.add(personaje1);
+    
+    
+
+	}
 }
