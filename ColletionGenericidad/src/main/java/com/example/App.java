@@ -82,12 +82,14 @@ public class App {
     
     // =================================================================
     
-    List<Personaje> personaje = null;
+    // Evolución de la declaración de una lista:
+    // List<Personaje> personaje = null;
     // inicializar con null no funciona. no puedo agregar elementos porque no reserva memoria
     // hay que usar un constructor de alguna de las clases de List.
+    // List<Personaje> personaje = new ArrayList<Personaje>();
+    var personajes = new ArrayList<Personaje>();
+    
 
-    
-    
     Personaje personaje1 = Personaje.builder()
     		.nombre("Duglas")
     		.primerApellido("Taydron")
@@ -95,9 +97,36 @@ public class App {
     		.fechaNacimiento(LocalDate.of(1995, Month.JANUARY, 20))
     		.genero(Genero.HOMBRE)
     		.build();
+    var personaje2 = Personaje.builder()
+            .nombre("Carolina")
+            .primerApellido("Garzón")
+            .segundoApellido("Becerra")
+            .fechaNacimiento(LocalDate.of(2000, Month.MAY, 15))
+            .genero(Genero.MUJER)
+            .build();
+
+    Personaje personaje3 = Personaje.builder()
+            .nombre("María")
+            .primerApellido("Garzón")
+            .segundoApellido("González")
+            .fechaNacimiento(LocalDate.of(2005, Month.SEPTEMBER, 3))
+            .genero(Genero.MUJER)
+            .build();
+
+    var personaje4 = Personaje.builder()
+            .nombre("Jerónimo")
+            .primerApellido("Arenal")
+            .segundoApellido("Gómez")
+            .fechaNacimiento(LocalDate.of(1989, Month.DECEMBER, 12))
+            .genero(Genero.HOMBRE)
+            .build();
+
+    // añadir a la lista:
+    //personajes.add(personaje1);
     
-    personaje.add(personaje1);
-    
+    personajes = (ArrayList<Personaje>) Arrays.asList(personaje2, personaje3, personaje4);
+
+    System.out.println(personajes);
     
 
 	}
