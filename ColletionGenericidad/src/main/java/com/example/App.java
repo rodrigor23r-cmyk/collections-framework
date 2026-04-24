@@ -146,7 +146,8 @@ public class App {
     	Iterator<Personaje> it = personajes.iterator();
     	
     	while (it.hasNext()) {
-    		if (it.next().genero().equals(Genero.HOMBRE)) {
+    		Personaje personilla = it.next();
+    		if (personilla.genero().equals(Genero.HOMBRE) && (personilla.nombre().length() == 6)) {
     			it.remove();
     		}
     	}
@@ -154,6 +155,6 @@ public class App {
     	
     	System.out.println("========RESULTADO DE HACER LA ELIMINACION============");
     	personajes.forEach(System.out::println);
-
+    	
 	}
 }
