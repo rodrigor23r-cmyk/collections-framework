@@ -87,7 +87,7 @@ public class App {
     // inicializar con null no funciona. no puedo agregar elementos porque no reserva memoria
     // hay que usar un constructor de alguna de las clases de List.
     // List<Personaje> personaje = new ArrayList<Personaje>();
-    var personajes = new ArrayList<Personaje>();
+    List personajes = new ArrayList<Personaje>();
     
 
     Personaje personaje1 = Personaje.builder()
@@ -97,7 +97,7 @@ public class App {
     		.fechaNacimiento(LocalDate.of(1995, Month.JANUARY, 20))
     		.genero(Genero.HOMBRE)
     		.build();
-    var personaje2 = Personaje.builder()
+    Personaje personaje2 = Personaje.builder()
             .nombre("Carolina")
             .primerApellido("Garzón")
             .segundoApellido("Becerra")
@@ -113,7 +113,7 @@ public class App {
             .genero(Genero.MUJER)
             .build();
 
-    var personaje4 = Personaje.builder()
+    Personaje personaje4 = Personaje.builder()
             .nombre("Jerónimo")
             .primerApellido("Arenal")
             .segundoApellido("Gómez")
@@ -124,8 +124,9 @@ public class App {
     // añadir a la lista:
     //personajes.add(personaje1);
     
-    personajes = (ArrayList<Personaje>) Arrays.asList(personaje2, personaje3, personaje4);
-
+    // personajes = (ArrayList<Personaje>) Arrays.asList(personaje2, personaje3, personaje4);
+    // este casteo no funciona si había usado var en vez de Personaje
+    personajes = Arrays.asList(personaje2, personaje3, personaje4);
     System.out.println(personajes);
     
 
