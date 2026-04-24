@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.management.ValueExp;
@@ -124,8 +125,35 @@ public class App {
     /*
      * la lista resultante no es de tamaño fijo porque no es un array
      * */
-    System.out.println(personajes);
+    //System.out.println(personajes);
     
+    /*
+     * Traversing Collection
+     * https://docs.oracle.com/javase/tutorial/collections/interfaces/collection.html 
+     * 
+     * 3 formas de recorrer una colección:
+     * 
+     * 1 Iterator<E> elimina elementos a la vez que lo recorre.
+     * 2 sentencia for mejorada
+     * 3 la mejor: Operaciones de agregado, métodos por referencia,
+     * 		operaciones de agregado, Programación funcional, lambda
+     * 
+     */
+    
+    	System.out.println("=========LISTADO ORIGINAL DE PERSONAS================");
+    	System.out.println(personajes);
+    	
+    	Iterator<Personaje> it = personajes.iterator();
+    	
+    	while (it.hasNext()) {
+    		if (it.next().genero().equals(Genero.HOMBRE)) {
+    			it.remove();
+    		}
+    	}
+    	
+    	
+    	System.out.println("========RESULTADO DE HACER LA ELIMINACION============");
+    	personajes.forEach(System.out::println);
 
 	}
 }
