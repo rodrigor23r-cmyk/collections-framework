@@ -224,11 +224,16 @@ public class App {
     	 * La exp. lambda es como un método anónimo.
     	 * se usa para implementar el método abstracto las interfaces funcionales
     	 * */
-    	
-    	
-    	System.out.println("========RESULTADO DE SOLO MUJERES============");
-    personajes.stream().filter(p -> p.genero().equals(Genero.MUJER))
-    .forEach(System.out::println);
+    	final int z = 4;
+    	/*
+    	 * FINAL Y EFFECTIVELY FINAL EXPLICACIÓN*/
+    personajes.stream().filter(p -> {
+    		int y = 2;
+    		y += z;
+    		
+    		return p.genero().equals(Genero.MUJER);
+    });
+    
     	
 	}
 }
