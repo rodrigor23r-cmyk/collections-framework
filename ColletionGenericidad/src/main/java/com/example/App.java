@@ -13,6 +13,8 @@ import javax.management.ValueExp;
 
 
 
+
+
 /**
  * docs.oracle.com/javase/tutorial/extra/generics/index.html
  * 
@@ -205,7 +207,7 @@ public class App {
     	/*
     	 * El código hasta aquí es una exageración. Crear una clase Filtro para usar Predicate
     	 * La solución es usar una clase anónima. Sin nombre 
-    	 * */
+    	 * 
     	
     	personajes.stream().filter(new Predicate<Personaje>() {
 
@@ -216,6 +218,17 @@ public class App {
 			}
 		});
     	
+    	 * El uso de la expresión de clase anónima es mejor que la implementación de la
+    	 * clase Filtro pero es muy exagerado (largo). Con las expresiones lambda esto
+    	 * se acorta.
+    	 * La exp. lambda es como un método anónimo.
+    	 * se usa para implementar el método abstracto las interfaces funcionales
+    	 * */
+    	
+    	
+    	System.out.println("========RESULTADO DE SOLO MUJERES============");
+    personajes.stream().filter(p -> p.genero().equals(Genero.MUJER))
+    .forEach(System.out::println);
     	
 	}
 }
