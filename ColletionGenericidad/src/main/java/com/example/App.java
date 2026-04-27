@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.management.ValueExp;
 
-import com.sun.org.apache.xpath.internal.operations.Equals;
+
 
 /**
  * docs.oracle.com/javase/tutorial/extra/generics/index.html
@@ -25,6 +26,9 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
  */
 
 public class App {
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
     	
     	// concretando la definición del comentario anterior
@@ -99,6 +103,7 @@ public class App {
     		.segundoApellido("González")
     		.fechaNacimiento(LocalDate.of(1995, Month.JANUARY, 20))
     		.genero(Genero.HOMBRE)
+    		.salario(3500.50)    		
     		.build());
     personajes.add(Personaje.builder()
             .nombre("Carolina")
@@ -106,6 +111,7 @@ public class App {
             .segundoApellido("Becerra")
             .fechaNacimiento(LocalDate.of(2000, Month.MAY, 15))
             .genero(Genero.MUJER)
+            .salario(3600.20)
             .build());
 
     personajes.add(Personaje.builder()
@@ -114,6 +120,7 @@ public class App {
             .segundoApellido("González")
             .fechaNacimiento(LocalDate.of(2005, Month.SEPTEMBER, 3))
             .genero(Genero.MUJER)
+            .salario(2350.21)
             .build());
 
     personajes.add(Personaje.builder()
@@ -122,6 +129,7 @@ public class App {
             .segundoApellido("Gómez")
             .fechaNacimiento(LocalDate.of(1989, Month.DECEMBER, 12))
             .genero(Genero.HOMBRE)
+            .salario(1900.13)
             .build());
 
     /*
@@ -145,7 +153,7 @@ public class App {
     	System.out.println("=========LISTADO ORIGINAL DE PERSONAS================");
     	System.out.println(personajes);
     	
-
+    	/*
     	Iterator<Personaje> it = personajes.iterator();
     	
     	while (it.hasNext()) {
@@ -154,6 +162,7 @@ public class App {
     			it.remove();
     		}
     	}
+    	*/
     	
     	
     	System.out.println("========RESULTADO DE HACER LA ELIMINACION============");
@@ -162,13 +171,34 @@ public class App {
 
     	/*variante 2 for mejorada
     	 * eliminar personas de género mujer
-    	*/
+    	
     	for (Personaje personillas : personajes) {
     		if (personillas.genero().equals(Genero.MUJER)) {
     			personajes.remove(personillas);
     		}
-    	// la línea 168 no da error ahora pero no funcionará.	
+    	la línea 168 no da error ahora pero no funcionará.	
     	}
+    	*/
+    	
+    	
+    	/*
+    	 * OPERACIONES DE AGREGADO PARA RECORRER LAS COLECCIONES
+    	 * 
+    	 * Salario medio de las MUJERES
+    	 * 
+    	 * concepto de pipeline, la clase Stream se aplica a colecciones, sockets, 
+    	 * consultas a BBDDs, ficheros, 
+    	 *
+    	 Stream <Personaje> flujoDePersonajes = personajes.stream().filter(predicate);
+    	 predicate es una interface funcional que tiene, entre otras cosas, un método abstracto
+    	 y también es la condición que debe cumplir la tubería*/
+    	 
+    	Filtro filtro = new Filtro();
+    	
+    	// personas.stream().filter(filtro);
+    	
+    	
+    	personajes.stream().filter(new Filtro());
     	
     	
 	}
