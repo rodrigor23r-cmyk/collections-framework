@@ -275,5 +275,13 @@ public class App {
 	    		.mapToDouble(Personaje::salario)
 	    		.average().orElse(0.0);
     	
+   	  	
+   	  	/*
+   	  	 * Colección inmutable................................
+   	  	 * */
+   	  	
+   	  	List<String> listaInmutable = List.of("Jerónimo", "Duglas","Carolina");
+   	  	
+   	  	
 	}
 }
