@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -282,6 +284,32 @@ public class App {
    	  	
    	  	List<String> listaInmutable = List.of("Jerónimo", "Duglas","Carolina");
    	  	
+   	  	/*
+   	  	 * Object ordering: ordenar objetos
+   	  	 * https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html
+   	  	 *
+   	  		Collections.sort(listaInmutable);
+   	  		System.out.println(listaInmutable);
+   	  		falla porque es una lista inmutable
+   	  	*/
+   	  	List<String> nombreOrdenado = Arrays.asList("Jeronimo", "Duglas", "Carolina");
+   		Collections.sort(nombreOrdenado);
+	  	System.out.println(nombreOrdenado);
+	  	
+	  	/*
+	  	 * Ordenar la lista de personajes
+	  	La línea siguiente esta línea da error por que la interfaz comparable no
+	  	se ha implementado en la clase Personaje.	  	
+	  	
+	  	Collections.sort(personajes);
    	  	
+   	  	*Lo vamos a ordenar por primerApellido, segundo y nombre
+   	  	*
+   	  	*
+   	  	*/
+	  	Collections.sort(personajes);
+	  	System.out.println(personajes);
+	  	
+	  	
 	}
 }
