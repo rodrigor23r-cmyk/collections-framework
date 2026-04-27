@@ -15,6 +15,8 @@ import javax.management.ValueExp;
 
 
 
+
+
 /**
  * docs.oracle.com/javase/tutorial/extra/generics/index.html
  * 
@@ -223,17 +225,55 @@ public class App {
     	 * se acorta.
     	 * La exp. lambda es como un método anónimo.
     	 * se usa para implementar el método abstracto las interfaces funcionales
-    	 * */
+    	 *
     	final int z = 4;
-    	/*
-    	 * FINAL Y EFFECTIVELY FINAL EXPLICACIÓN*/
+    	
+    	 * FINAL Y EFFECTIVELY FINAL EXPLICACIÓN
     personajes.stream().filter(p -> {
     		int y = 2;
     		y += z;
     		
     		return p.genero().equals(Genero.MUJER);
     });
-    
+    */
+    	personajes.stream()
+    		.filter(p ->p.genero().equals(Genero.MUJER))
+    		.mapToDouble(p -> p.salario())
+    		.average()
+    		.ifPresent(ave -> System.out.println(ave))
+    		;
+    	/*
+    	 * average() devuelve un opcional de double y se podría poner así
+    	 * 
+    	 *  OpcionalDoble opcionalDeSalarioPromedio = personajes.stream()
+	    		.filter(p ->p.genero().equals(Genero.MUJER))
+	    		.mapToDouble(p -> p.salario())
+	    		.average();
+	    	
+	    	if (opcionalDeSalarioPromedio.isPresent()) {
+	    	
+	    		salarioMedio = opcionalDeSalarioPromedio.getAsDouble();
+	    	}
+    	 * 
+    	 * 
+    	 * otra forma:
+    	 * 	double opcionalDeSalarioPromedio = personajes.stream()
+	    		.filter(p ->p.genero().equals(Genero.MUJER))
+	    		.mapToDouble(p -> p.salario())
+	    		.average().orElse(0.0);
+	    		
+	    		
+	    	==============Método por referencia =============================
+	    	
+	    	Si la expresión lambda lo único que hace es invocar al método que
+	    	realiza el trabajo, es más eficiente pasar por referencia la dirección
+	    	de dicho método para que realice el trabajo.
+	    	
+    	 * */
+   	  	double opcionalDeSalarioPromedio2 = personajes.stream()
+	    		.filter(p ->p.genero().equals(Genero.MUJER))
+	    		.mapToDouble(Personaje::salario)
+	    		.average().orElse(0.0);
     	
 	}
 }
