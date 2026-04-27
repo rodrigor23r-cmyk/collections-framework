@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import javax.management.ValueExp;
@@ -193,12 +194,27 @@ public class App {
     	 predicate es una interface funcional que tiene, entre otras cosas, un método abstracto
     	 y también es la condición que debe cumplir la tubería*/
     	 
-    	Filtro filtro = new Filtro();
+    /*	Filtro filtro = new Filtro();
     	
-    	// personas.stream().filter(filtro);
+    	 personas.stream().filter(filtro);
     	
     	
     	personajes.stream().filter(new Filtro());
+    	*/
+    	
+    	/*
+    	 * El código hasta aquí es una exageración. Crear una clase Filtro para usar Predicate
+    	 * La solución es usar una clase anónima. Sin nombre 
+    	 * */
+    	
+    	personajes.stream().filter(new Predicate<Personaje>() {
+
+			@Override
+			public boolean test(Personaje p) {
+				
+				return p.genero().equals(Genero.MUJER);
+			}
+		});
     	
     	
 	}
