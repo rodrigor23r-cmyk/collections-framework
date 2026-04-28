@@ -307,9 +307,12 @@ public class App {
    	  	*
    	  	*
    	  	*/
-	  	Collections.sort(personajes);
+	  	Collections.sort(personajes, Collections.reverseOrder());
 	  	personajes.stream().forEach(p->System.out.println(p));
 	  	
+	  	/*
+	  	 * si lo quiero al revés de la Z a la A
+	  	 * */
 	  	
 	}
 }
