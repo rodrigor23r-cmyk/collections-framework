@@ -285,72 +285,51 @@ public class App {
    	  	 * */
    	  	
    	  	List<String> listaInmutable = List.of("Jerónimo", "Duglas","Carolina");
+   	  	// ------------------------------------------------
+   	  	listaInmutable.stream().sorted().forEach(System.out::println);   	  	
+   	  	System.out.println(listaInmutable);
+   	  	//el pipeline se ha ordenado pero la lista inmutable NO
    	  	
+   	  	List<Integer> listaNumerosSizeFijo = Arrays.asList(10, 12, 14);
+   	  	
+   	  	List<Integer> listaVariableSize = new ArrayList<Integer>();
+   	  	
+   	  	listaVariableSize.addAll(listaNumerosSizeFijo);
+   	  	
+   	  	listaVariableSize.add(16);
+   	  	listaVariableSize.add(18);
+   	  	System.out.println(listaVariableSize);
+   	  	// ---------------------------------------------------------
+   	  	List<String> listaInmutable2 = List.copyOf(Arrays.asList("Alex", "Sebastián"));
    	  	/*
-   	  	 * Object ordering: ordenar objetos
-   	  	 * https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html
-   	  	 *
-   	  		Collections.sort(listaInmutable);
-   	  		System.out.println(listaInmutable);
-   	  		falla porque es una lista inmutable
-   	  	*/
-   	  	List<String> nombreOrdenado = Arrays.asList("Jeronimo", "Duglas", "Carolina");
-   		Collections.sort(nombreOrdenado);
-	  	System.out.println(nombreOrdenado);
-	  	
-	  	/*
-	  	 * Ordenar la lista de personajes
-	  	La línea siguiente esta línea da error por que la interfaz comparable no
-	  	se ha implementado en la clase Personaje.	  	
-	  	
-	  	Collections.sort(personajes);
+   	  	 * las listas inmutables no se pueden ordenar pero al pasar a stream SI.
+   	  	 *  así NO  --  Collections.sort(listaInmutable2);
+   	  	 */
+   	  	System.out.println("============Carolina==================");
    	  	
-   	  	*Lo vamos a ordenar por primerApellido, segundo y nombre
-   	  	*
-   	  	*
-   	  	*/
-	  	Collections.sort(personajes, Collections.reverseOrder());
-	  	personajes.stream().forEach(p->System.out.println(p));
-	  	
-	  	/*
-	  	 * si lo quiero al revés de la Z a la A
-	  	 * se añade ,Collections.reverseOrder() dentro de los parámetros de sort
-	  	
-	  	 * 
-	  	 * No interesa el orden natural sino el salario de menor a mayor
-	  	 * */
-	  	Collections.sort(personajes,
-	  			(persona1, persona2)-> Double.valueOf( persona1.salario()).compareTo(persona2.salario()));
-	  	
-	  	System.out.println("listado por salario");
-	  	personajes.forEach(System.out::println);
-	  	
-	  	//variante para ordenar por el salario
-	  	
-	  	Collections.sort(personajes, Comparator.comparingDouble(Personaje::salario));
-	  	
-	  	System.out.println("listado por salario, variante 2");
-	  	personajes.forEach(System.out::println);
-	  	
-	  	//ordenar por el salario de mayor a menor
-	  	
-	  	Collections.sort(personajes, Comparator.comparingDouble(Personaje::salario).reversed());
-	  	
-		System.out.println("listado por salario, variante 3 orden inverso");
-	  	personajes.forEach(System.out::println);
-	  	
-	 // Opción B: Usando reverseOrder
-	  	Collections.sort(personajes, Collections.reverseOrder(Comparator.comparingDouble(Personaje::salario)));
-	
-	  	System.out.println("listado por salario, variante 4 orden inverso AUTOR JERÓNIMO");
-	  	personajes.forEach(System.out::println);
-	  	
-	  	// Opción C: Usando más alternativas
-	  	personajes.sort((p1, p2) -> Double.compare(p2.salario(), p1.salario()));
-	  	
-	  	System.out.println("listado por salario, variante 5 orden inverso AUTOR JERONIMO");
-	  	personajes.forEach(System.out::println);
-	  	
-	  	
+   	  	//List<Personaje> listaOrdenada = -------> esto lo guarda en una lista nueva.
+   	  	personajes.stream()
+   	  		.sorted(Comparator.comparing(Personaje::genero)
+   	  				.thenComparing(Comparator
+   	  			    .comparingDouble(Personaje::salario).reversed()))
+   	  				.forEach(System.out::println);
+   	  	// .collect(Collectors.toList());
+   	  	
+   	  	System.out.println("===============sin stream===============");
+   	  	
+   	  	personajes.sort(
+   		    Comparator.comparing(Personaje::genero).reversed()
+   		              .thenComparing(Personaje::salario).reversed()
+   	  			);
+   	 
+   	  	personajes.forEach(System.out::println);
+   	 System.out.println("=============otro Carolina=================");
+   	 
+   	 personajes.stream()
+   	 .sorted(Comparator.comparing(Personaje::genero).reversed()
+   			 .thenComparingDouble(Personaje::salario).reversed())
+   	 .forEach(System.out::println);
+   	 
+   	 // https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html
 	}
 }
