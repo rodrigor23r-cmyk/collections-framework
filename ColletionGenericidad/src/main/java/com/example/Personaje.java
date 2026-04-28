@@ -21,7 +21,7 @@ public record Personaje(
 		
 		int cmpPrimerApellido = this.primerApellido
 				.compareTo(personaje.primerApellido());
-		// para invertir el orden
+		// para invertir el orden (de la Z a la A):
 		//int cmpPrimerApellido = personaje.primerApellido().compareTo(this.primerApellido);
 		
 		int cmpSegundoApellido = this.segundoApellido

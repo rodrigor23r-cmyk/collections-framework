@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import javax.management.ValueExp;
+
 
 
 
@@ -312,7 +314,43 @@ public class App {
 	  	
 	  	/*
 	  	 * si lo quiero al revés de la Z a la A
+	  	 * se añade ,Collections.reverseOrder() dentro de los parámetros de sort
+	  	
+	  	 * 
+	  	 * No interesa el orden natural sino el salario de menor a mayor
 	  	 * */
+	  	Collections.sort(personajes,
+	  			(persona1, persona2)-> Double.valueOf( persona1.salario()).compareTo(persona2.salario()));
+	  	
+	  	System.out.println("listado por salario");
+	  	personajes.forEach(System.out::println);
+	  	
+	  	//variante para ordenar por el salario
+	  	
+	  	Collections.sort(personajes, Comparator.comparingDouble(Personaje::salario));
+	  	
+	  	System.out.println("listado por salario, variante 2");
+	  	personajes.forEach(System.out::println);
+	  	
+	  	//ordenar por el salario de mayor a menor
+	  	
+	  	Collections.sort(personajes, Comparator.comparingDouble(Personaje::salario).reversed());
+	  	
+		System.out.println("listado por salario, variante 3 orden inverso");
+	  	personajes.forEach(System.out::println);
+	  	
+	 // Opción B: Usando reverseOrder
+	  	Collections.sort(personajes, Collections.reverseOrder(Comparator.comparingDouble(Personaje::salario)));
+	
+	  	System.out.println("listado por salario, variante 4 orden inverso AUTOR JERÓNIMO");
+	  	personajes.forEach(System.out::println);
+	  	
+	  	// Opción C: Usando más alternativas
+	  	personajes.sort((p1, p2) -> Double.compare(p2.salario(), p1.salario()));
+	  	
+	  	System.out.println("listado por salario, variante 5 orden inverso AUTOR JERONIMO");
+	  	personajes.forEach(System.out::println);
+	  	
 	  	
 	}
 }
