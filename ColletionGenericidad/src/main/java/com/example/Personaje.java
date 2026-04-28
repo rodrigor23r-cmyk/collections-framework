@@ -12,8 +12,10 @@ public record Personaje(
 		String segundoApellido, 
 		LocalDate fechaNacimiento,
 		Genero genero, 
-		double salario) 
-implements Comparable<Personaje> {
+		double salario
+		
+		) implements Comparable<Personaje> {
+	
 	@Override
 	public int compareTo(Personaje personaje) {
 		

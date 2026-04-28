@@ -113,7 +113,7 @@ public class App {
     		.salario(3500.50)    		
     		.build());
     personajes.add(Personaje.builder()
-            .nombre("Carolina")
+            .nombre("Mazolina")
             .primerApellido("Garzón")
             .segundoApellido("Becerra")
             .fechaNacimiento(LocalDate.of(2000, Month.MAY, 15))
@@ -124,7 +124,7 @@ public class App {
     personajes.add(Personaje.builder()
             .nombre("María")
             .primerApellido("Garzón")
-            .segundoApellido("González")
+            .segundoApellido("Becerra")
             .fechaNacimiento(LocalDate.of(2005, Month.SEPTEMBER, 3))
             .genero(Genero.MUJER)
             .salario(2350.21)
@@ -308,7 +308,7 @@ public class App {
    	  	*
    	  	*/
 	  	Collections.sort(personajes);
-	  	System.out.println(personajes);
+	  	personajes.stream().forEach(p->System.out.println(p));
 	  	
 	  	
 	}
